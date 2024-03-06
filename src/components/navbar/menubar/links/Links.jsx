@@ -23,20 +23,25 @@ const itemVariants = {
     opacity: 0,
   },
 };
+const Links = () => {
+  const items = ["Homepage", "About", "Portfolio", "Contact"];
 
+  return (
+    <motion.div className="links" variants={variants}>
+      {items.map((item) => (
+        <motion.a
+          href={`#${item}`}
+          key={item}
+          variants={itemVariants}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          {item}
+        </motion.a>
+      ))}
+    </motion.div>
+  );
+};
 
-const Links = () =>{
-
-const links = ["Homepage", "About", "Portfolio", "Contact"];
-
-
-    return(
-        <div className="links"> {links.map((link) => (
-            <a href= {`#${link}`} key={link}>
-                {link}
-            </a>
-            ))} </div>
-    )
-}
 
 export default Links

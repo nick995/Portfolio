@@ -14,12 +14,13 @@ const variants = {
 
     },
     closed: {
-      clipPath: "circle(30px at 48px 45px)",
+      clipPath: "circle(30px at 50px 50px)",
       transition: {
+        delay: 0.1,
         type: "spring",
         stiffness: 400,
         damping: 40,
-    },
+      },
     },
   };
   
@@ -31,7 +32,6 @@ const variants = {
         <motion.div className="bg" variants={variants}>
           <Links />
         </motion.div>
-        
         <ToggleButton setOpen={setOpen} />
       </motion.div>
     );

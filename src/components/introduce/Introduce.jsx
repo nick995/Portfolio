@@ -40,7 +40,7 @@ const techStackVariants = {
 
 const slidTextVariants = {
     initial:{
-        x: 1000,
+        x: 2000,
     },
     animate: {
         x: "-220%" ,
