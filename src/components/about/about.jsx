@@ -1,12 +1,34 @@
 import "./about.scss";
-import BackendImg from './Backend.png';
-import FrontendImg from './Frontend.png';
-import OtherImg from './Other.png';
+import BackendImg from "./Backend.png";
+import FrontendImg from "./Frontend.png";
+import OtherImg from "./Other.png";
 import { useAnimation, motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import React, { useEffect } from "react";
 
-import DjangoImg from '../../../public/django.png';
+import DjangoImg from "../../../public/django.png";
+import FastAPIImg from "../../../public/FastAPI.png";
+import PsqlImg from "../../../public/psql.png";
+import MySQL from "../../../public/MySQL.png";
+import Python from "../../../public/python.png";
+import Postman from "../../../public/Postman.png";
+
+
+import ReactImg from "../../../public/react.png";
+import HTMLImg from "../../../public/HTML5.png";
+import TailImg from "../../../public/TailwindCSS.png";
+import CSS3Img from "../../../public/CSS3.png";
+import JWTImg from "../../../public/JWT.png";
+
+import GitImg from "../../../public/Git.png";
+import GitHubImg from "../../../public/GitHub.png";
+import AWS from "../../../public/aws.png";
+import Java from "../../../public/Java.png";
+import CSharp from "../../../public/CSharp.png";
+import VSCode from "../../../public/VSCode.png";
+
+
+// import FastAPIImg from "./"
 
 const About = () => {
   return (
@@ -53,7 +75,6 @@ const StackContainer = () => {
   );
 };
 
-
 const IntroCard = () => {
   return (
     <div className="introCard">
@@ -70,57 +91,140 @@ const IntroCard = () => {
 };
 
 const BackendList = () => {
-  const backend = [
-    {name: "Django"},
-    {name: "FastAPI"},
-    {name: "MySQL"},
-    {name: "Postgresql"},
+  const backends = [
+    { name: "Django", img: DjangoImg },
+    { name: "FastAPI", img: FastAPIImg },
+    { name: "Postgresql", img: PsqlImg },
+    { name: "MySQL", img: MySQL },
+    { name: "Postman", img: Postman},
+    { name: "Python", img: Python},
   ];
-  return <></>; 
+
+  return (
+    <div>
+      {backends.map((backend, index) => (
+        <div className="tech">
+          <motion.img
+            src={backend.img}
+            key={backend.img}
+            variants={techStackVariants}
+            whileHover="whileHover"
+          ></motion.img>
+          {backend.name}
+        </div>
+      ))}
+    </div>
+  );
 };
 
-const Skills = () => {
-    const skills = [
-        { name: "Backend", img: BackendImg },
-        { name: "Frontend", img: FrontendImg },
-        { name: "Other", img: OtherImg },
-      ];
-      return (
-        <div className="stackContainer">
-          {skills.map((skill, index) => (
-            <div key={index} className="stackCard">
-                <div className="title">
-                    <img src={skill.img} alt={skill.name} />
-                    <h2>{skill.name}</h2>
-                </div>
-            </div>
-          ))}
+const FrontendList = () => {
+  const frontends = [
+    { name: "HTML", img: HTMLImg },
+    { name: "CSS", img: CSS3Img },
+    { name: "React", img: ReactImg },
+    { name: "Tailwind CSS", img: TailImg },
+    { name: "JWT", img: JWTImg },
+
+  ];
+
+  return (
+    <div>
+      {frontends.map((frontend, index) => (
+        <div className="tech">
+          <motion.img
+            src={frontend.img}
+            key={frontend.name}
+            variants={techStackVariants}
+            whileHover="whileHover"
+          ></motion.img>
+          {frontend.name}
         </div>
-      );
+      ))}
+    </div>
+  );
+};
+
+const OhterList = () => {
+  const Others = [
+    { name: "Git", img: GitImg },
+    { name: "GitHub", img: GitHubImg },
+    { name: "AWS", img: AWS },
+    { name: "Java", img: Java },
+    { name: "C#", img: CSharp },
+    { name: "VS Code", img: VSCode },
+
+  ];
+
+  return (
+    <div>
+      {Others.map((other, index) => (
+        <div className="tech">
+          <motion.img
+            src={other.img}
+            key={other.name}
+            variants={techStackVariants}
+            whileHover="whileHover"
+          ></motion.img>
+          {other.name}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+
+
+const Skills = () => {
+  const skills = [
+    { name: "Backend", img: BackendImg, list: <BackendList /> },
+    { name: "Frontend", img: FrontendImg, list: <FrontendList/> },
+    { name: "Other", img: OtherImg, list: <OhterList/> },
+  ];
+  return (
+    <div className="stackContainer">
+      {skills.map((skill, index) => (
+        <div key={index} className="stackCard">
+          <div className="title">
+            <img src={skill.img} alt={skill.name} />
+            <h2>{skill.name}</h2>
+          </div>
+          <div className="techList">{skill.list}</div>
+        </div>
+      ))}
+    </div>
+  );
 };
 
 const slidTextVariants = {
-  initial:{
-      x: 2000,
+  initial: {
+    x: 2000,
   },
   animate: {
-      x: "-220%" ,
-      transition: {
-          repeat: Infinity,
-          repeatType: "mirror",
-          duration: 20,
-      },
+    x: "-220%",
+    transition: {
+      repeat: Infinity,
+      repeatType: "mirror",
+      duration: 20,
+    },
   },
 };
 
 const skillVariants = {
   initial: { opacity: 0, scale: 0.5 },
   animate: { opacity: 1, scale: 1 },
-  transition:{
+  transition: {
     duration: 0.5,
     delay: 1,
-    ease: [0, 0.71, 0.2, 1.01]
-  }
+    ease: [0, 0.71, 0.2, 1.01],
+  },
+};
+
+const techStackVariants = {
+  whileHover: {
+    opacity: 1,
+    scale: 2,
+    rotate: 360,
+  },
 };
 
 export default About;
